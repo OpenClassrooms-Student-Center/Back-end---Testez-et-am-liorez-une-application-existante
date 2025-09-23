@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.testcontainers.containers.MySQLContainer;
+import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -31,12 +32,10 @@ public class UserControllerTest {
     private static final String LAST_NAME = "Doe";
     private static final String LOGIN = "login";
     private static final String PASSWORD = "password";
-    private static MySQLContainer mySQLContainer;
 
-    static {
-        mySQLContainer = new MySQLContainer("mysql:latest");
-        mySQLContainer.start();
-    }
+
+    @Container
+    static MySQLContainer mySQLContainer = new MySQLContainer("mysql:latest");
 
     @Autowired
     private UserService userService;
