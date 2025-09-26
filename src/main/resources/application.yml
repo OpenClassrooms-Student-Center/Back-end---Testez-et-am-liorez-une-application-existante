@@ -23,3 +23,9 @@ logging:
     com:
       openclassrooms:
         etudiant: info
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
